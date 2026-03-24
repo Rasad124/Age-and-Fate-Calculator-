@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Multi Tools | Age, BMI, Percentage Calculator</title>
+<meta name="description" content="Royal Dark Multi Tools: Age, BMI, Percentage, Days Calculator Bangladesh. Premium & eye-catching UI.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background:#020617;
+    color:white;
+    line-height:1.6;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+h1,h2{color:#fbbf24; text-align:center; text-shadow: 0 0 15px rgba(251,191,36,0.5);}
+h2{margin-top:30px;}
+
+.menu{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.menu button{
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background: linear-gradient(45deg, #fbbf24, #d97706);
+    font-weight:bold;
+    color:#020617;
+    box-shadow: 0 5px 15px rgba(251,191,36,0.4);
+    transition: transform 0.2s;
+}
+.menu button:hover{transform: scale(1.05);}
+
+.card{
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(251,191,36,0.1);
+    padding:25px;
+    border-radius:20px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+input{
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:none;
+    width:90%;
+    background:#1e293b;
+    color:white;
+    outline:none;
+}
+
+button.calcBtn{
+    width:95%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(to right,#fbbf24,#d97706);
+    color:#020617;
+    font-weight:bold;
+    cursor:pointer;
+    transition: transform 0.2s;
+}
+button.calcBtn:hover{transform: scale(1.03);}
+
+.tool{
+    display:none;
+    margin-top:20px;
+    text-align:center;
+}
+
+.active{display:block;}
+
+.result{
+    margin-top:15px;
+    font-size:1.2rem;
+    color:#fbbf24;
+}
+
+.ad{
+    margin:15px 0;
+    padding:10px;
+    background:#111827;
+    border-radius:10px;
+    text-align:center;
+}
+
+@media(max-width:480px){
+    .menu{flex-direction:column;}
+    input, button.calcBtn{width:100%;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Royal Multi Tools</h1>
+
+<div class="menu">
+<button onclick="showTool('age')">Age</button>
+<button onclick="showTool('bmi')">BMI</button>
+<button onclick="showTool('percent')">Percentage</button>
+<button onclick="showTool('days')">Days</button>
+</div>
+
+<div class="ad">Top Ad</div>
+
+<div class="card">
+
+<!-- AGE -->
+<div id="age" class="tool active">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button class="calcBtn" onclick="calcAge()">Calculate</button>
+<p id="ageResult" class="result"></p>
+</div>
+
+<!-- BMI -->
+<div id="bmi" class="tool">
+<h2>BMI Calculator</h2>
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (m)">
+<button class="calcBtn" onclick="calcBMI()">Calculate</button>
+<p id="bmiResult" class="result"></p>
+</div>
+
+<!-- PERCENT -->
+<div id="percent" class="tool">
+<h2>Percentage Calculator</h2>
+<input type="number" id="total" placeholder="Total">
+<input type="number" id="part" placeholder="Part">
+<button class="calcBtn" onclick="calcPercent()">Calculate</button>
+<p id="percentResult" class="result"></p>
+</div>
+
+<!-- DAYS -->
+<div id="days" class="tool">
+<h2>Days Between Dates</h2>
+<input type="date" id="d1">
+<input type="date" id="d2">
+<button class="calcBtn" onclick="calcDays()">Calculate</button>
+<p id="daysResult" class="result"></p>
+</div>
+
+</div>
+
+<div class="ad">Result Ad</div>
+
+<!-- SEO / Content -->
+<div style="margin-top:30px;color:#94a3b8;">
+<h2>All in One Calculator Bangladesh</h2>
+<p>Royal Multi Tools আপনাকে বয়স, BMI, পার্সেন্টেজ এবং Days calculator সহ আরও অনেক ক্যালকুলেটর দিয়ে সাপোর্ট করে। Premium Royal Dark Theme UI দিয়ে আরও আকর্ষণীয় অভিজ্ঞতা।</p>
+</div>
+
+</div>
+
+<script>
+// switch tool
+function showTool(id){
+document.querySelectorAll('.tool').forEach(t=>t.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+// AGE
+function calcAge(){
+let dob=new Date(document.getElementById("dob").value);
+let today=new Date();
+if(!dob.getTime()){alert("Enter date");return;}
+let age=today.getFullYear()-dob.getFullYear();
+let m=today.getMonth()-dob.getMonth();
+if(m<0) age--;
+document.getElementById("ageResult").innerText="Age: "+age+" Years";
+}
+
+// BMI
+function calcBMI(){
+let w=document.getElementById("weight").value;
+let h=document.getElementById("height").value;
+if(!w || !h){alert("Enter weight & height");return;}
+let bmi=(w/(h*h)).toFixed(2);
+document.getElementById("bmiResult").innerText="BMI: "+bmi;
+}
+
+// Percent
+function calcPercent(){
+let total=document.getElementById("total").value;
+let part=document.getElementById("part").value;
+if(!total || !part){alert("Enter both values");return;}
+let p=(part/total*100).toFixed(2);
+document.getElementById("percentResult").innerText=p+"%";
+}
+
+// Days
+function calcDays(){
+let d1=new Date(document.getElementById("d1").value);
+let d2=new Date(document.getElementById("d2").value);
+if(!d1 || !d2){alert("Enter both dates");return;}
+let diff=Math.abs((d2-d1)/(1000*60*60*24));
+document.getElementById("daysResult").innerText=diff+" days";
+}
+</script>
+
+</body>
+  </html>
